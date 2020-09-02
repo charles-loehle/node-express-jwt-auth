@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
-const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
@@ -13,8 +13,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 // database connection
-const dbURI =
-  'mongodb+srv://charlesloehle:charles123@netninja-node-express-j.xwj3e.mongodb.net/node-express-jwt-auth';
+const dbURI = process.env.MONGODB_URI;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
